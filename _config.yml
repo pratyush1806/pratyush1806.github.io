@@ -1,12 +1,12 @@
 # Site
 name: "Pratyush"
 title: "pratyush"
-description: "Visit my blog for technology related topics"
+description: "Visit my blog for technology related articles"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl: 
 google_analytics: 'XX-00000000-0'
-disqus: 'demowebsite'
+#disqus: 'demowebsite'
 #mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
 include: ["_pages"]
 permalink: /:title/

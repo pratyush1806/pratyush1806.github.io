@@ -4,9 +4,9 @@ title: "pratyush"
 description: "Visit my blog for technology related articles"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
-baseurl: 
+baseurl: /
 google_analytics: 'XX-00000000-0'
-#disqus: 'demowebsite'
+disqus: 'demowebsite'
 #mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
 include: ["_pages"]
 permalink: /:title/
@@ -20,7 +20,7 @@ authors:
     email: pratyush.majumdar@gmail.com
     web: https://pratyush1980.github.io
     twitter: https://twitter.com/_pratyush
-    description: "Author of pratyush1980.github.io"
+    description: "You are currently previewing Mediumish demo, a Jekyll template compatible with Github pages."
   john:
     name: John
     display_name: John    
@@ -29,7 +29,7 @@ authors:
     email: wowthemesnet@gmail.com
     web: https://www.wowthemes.net
     twitter: https://twitter.com/wowthemesnet
-    description: "This is the author box. Write a short description of the author here. You are currently previewing Mediumish demo, a Jekyll template compatible with Github pages."
+    description: "You are currently previewing Mediumish demo, a Jekyll template compatible with Github pages."
 
 # Plugins
 plugins:

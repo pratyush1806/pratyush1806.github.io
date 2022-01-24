@@ -183,6 +183,12 @@ section.recent-posts {
     border-radius: 100%;
 }
 
+.profile-thumb {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+}
+
 .post-top-meta {
     margin-bottom: 2rem;
 }

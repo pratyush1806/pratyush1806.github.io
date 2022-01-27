@@ -9,7 +9,7 @@ comments: false
    <div class="col-md-4 pr-5">
       <section class="left-section">
          <div class="img-box">
-            <img src="user.jpeg" alt="user-img">
+            <img src="{{site.baseurl}}/assets/images/profile.jpg" alt="user-img">
             <a class="upload-img-btn"><i class="far fa-smile-beam"></i></a>
          </div>
          <div class="u-details mt-3">

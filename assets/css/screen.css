@@ -905,3 +905,27 @@ iframe {
     opacity: 0;
     transition: opacity .25s;
 }
+
+/* About Page */
+.left-section {
+    min-height: 400px;
+}
+
+.left-section .img-box {
+   position: relative;
+}
+
+.left-section .img-box img {
+    width:70%;
+    height:70%;
+    border-radius:50%;
+}
+
+@media(max-width:767px) {
+    .left-section .img-box {
+       text-align: center;
+    }
+    .left-section .img-box img {
+        margin-top:auto;
+    }
+}

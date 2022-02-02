@@ -1,7 +1,7 @@
 # Site
 name: "Pratyush"
 title: "pratyush"
-description: "Visit my blog for Performance Engineering articles"
+description: "Performance Engineering Blog"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl: /

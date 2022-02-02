@@ -1,12 +1,12 @@
 # Site
 name: "Pratyush"
 title: "pratyush"
-description: "Visit my blog for technology related articles"
+description: "Visit my blog for Performance Engineering articles"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl: /
 google_analytics: 'XX-00000000-0'
-disqus: 'demowebsite'
+disqus: 'pratyush1806'
 #mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
 include: ["_pages"]
 permalink: /:title/
@@ -18,7 +18,7 @@ authors:
     display_name: Pratyush Majumdar
     gravatar: 4687f9747f79851480efcea1194cfa19
     email: pratyush.majumdar@gmail.com
-    web: https://pratyush1980.github.io
+    web: https://pratyush1806.github.io
     twitter: https://twitter.com/_pratyush
     description: "You are currently previewing Mediumish demo, a Jekyll template compatible with Github pages."
 

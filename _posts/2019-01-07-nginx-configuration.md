@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  ""
+title: "Nginx performance tuning and Security configuration"
 author: pratyush
 categories: [ Tuning, Tutorial, Security ]
 image: assets/images/nginx-configuration.jpg

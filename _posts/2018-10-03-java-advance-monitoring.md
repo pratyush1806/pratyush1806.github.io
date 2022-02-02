@@ -2,7 +2,7 @@
 layout: post
 title: "Advance monitoring and performance tuning in Java"
 author: pratyush
-categories: [ Tutorial ]
+categories: [ Tuning, Tutorial ]
 image: assets/images/java-advance-monitoring.jpg
 comments: true
 ---

@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "SSL Certificates"
+title: "Generate SSL Certificates"
 author: pratyush
 categories: [ Security, Tutorial ]
 #tags: [red, yellow]
 image: assets/images/ssl-certificates.jpg
-description: "How to generate SSL Certificates"
+description: "How to generate SSL Certificates for Java servers"
 featured: true
 hidden: true
 #rating: 4.5

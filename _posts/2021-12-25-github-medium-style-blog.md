@@ -3,9 +3,12 @@ layout: post
 title: "Github Medium style blog"
 author: pratyush
 categories: [ Tutorial ]
+#tags: [red, yellow]
 image: assets/images/github-medium-style-blog.jpg
+description: "How to use Github Pages to create your own Blog"
 featured: true
 hidden: true
+#rating: 4.5
 ---
 
 Steps to generate your own custom Blog using Github pages and Mediumish template. Mediumish template is built with Jekyll static site generator tool which has built-in support for GitHub Pages.

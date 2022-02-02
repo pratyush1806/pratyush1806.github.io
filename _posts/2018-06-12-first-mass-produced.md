@@ -2,7 +2,7 @@
 layout: post
 title: "The first mass-produced book to deviate from a rectilinear format"
 author: pratyush
-categories: [ Jekyll, tutorial ]
+categories: [ Jekyll, Tutorial ]
 image: assets/images/17.jpg
 comments: true
 ---

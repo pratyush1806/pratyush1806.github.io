@@ -852,6 +852,7 @@ iframe {
 
 .card .img-fluid {
     width: 100%;
+    height: auto;
 }
 
 .sticky-top-80 {

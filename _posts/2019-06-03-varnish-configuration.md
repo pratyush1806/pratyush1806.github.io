@@ -22,5 +22,5 @@ Varnish is a reverse HTTP proxy, sometimes referred to as an HTTP accelerator or
 8. quick fix for unstable backends, and
 9. HTTP router.
 
-<p><iframe style="width:100%;" height="315" src="https://www.youtube.com/watch?v=fGD14ChpcL4" frameborder="0" allowfullscreen></iframe></p>
+<p><<iframe width="560" height="315" src="https://www.youtube.com/embed/fGD14ChpcL4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 

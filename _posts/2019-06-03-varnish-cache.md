@@ -87,15 +87,15 @@ backend default {
 sub vcl_recv {
 	# Remove cookies you don't need
 	# Remove request parameters you don't need
-    # Device detection code
-    # Hostname detection code for multiple domains
-    # By-Pass requests based on URL
+	# Device detection code
+	# Hostname detection code for multiple domains
+	# By-Pass requests based on URL
 }
 
 # This function is used when a request is sent by our backend (Apache/Nginx server)
 sub vcl_backend_response {
 	# Clean response header, remove unwanted set-cookies
-    # Do not cache error pages like 301, 404, 500 etc
+	# Do not cache error pages like 301, 404, 500 etc
 
 	# Setting a cache time of 20 minutes and a grace period of 1 hour
 	# Grace period will deliver stale response if backend server is down
@@ -111,7 +111,7 @@ sub vcl_deliver {
 	} else {
 		set resp.http.x-Cache = "MISS";
 	}
-    unset resp.http.X-Powered-By;
-    unset resp.http.Age;
+	unset resp.http.X-Powered-By;
+	unset resp.http.Age;
 }
 ```

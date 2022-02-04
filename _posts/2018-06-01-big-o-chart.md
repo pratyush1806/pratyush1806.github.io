@@ -3,7 +3,7 @@ layout: post
 title: "Big O Chart"
 author: pratyush
 categories: [ Tutorial ]
-image: assets/images/big-o-chart.png
+image: assets/images/big-o-chart.jpg
 comments: true
 ---
 

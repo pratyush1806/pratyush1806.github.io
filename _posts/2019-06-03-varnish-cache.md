@@ -3,7 +3,7 @@ layout: post
 title: "What is Varnish Cache"
 author: pratyush
 categories: [ Tutorial ]
-image: assets/images/varnish-cache.jpg
+image: assets/images/varnish-cache.webp
 comments: true
 ---
 

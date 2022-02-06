@@ -3,7 +3,7 @@ layout: post
 title: "Perfomance tuning of Apache Server"
 author: pratyush
 categories: [ Tuning, Tutorial ]
-image: assets/images/tuning-apache.jpg
+image: assets/images/tuning-apache.webp
 comments: true
 ---
 

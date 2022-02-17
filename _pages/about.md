@@ -9,7 +9,7 @@ comments: false
    <div class="col-md-4">
       <section class="left-section">
          <div class="img-box">
-            <img src="{{site.baseurl}}/assets/images/profile.jpg" alt="user-img">
+            <img src="{{site.baseurl}}/assets/images/profile.webp" alt="user-img">
          </div>
          <div class="u-details mt-3">
             <h4 class="m-0 name">Pratyush Majumdar</h4>

@@ -4,7 +4,9 @@ title: "Advance monitoring and performance tuning in Java"
 author: pratyush
 categories: [ Tuning, Tutorial ]
 image: assets/images/java-advance-monitoring.webp
-comments: true
+description: "Monitoring and performance tuning in Java"
+featured: true
+hidden: true
 ---
 
 Java advance monitoring and performance tuning settings to be applied in Java Application Server startup files. Works for both Tomcat and Wildfly.

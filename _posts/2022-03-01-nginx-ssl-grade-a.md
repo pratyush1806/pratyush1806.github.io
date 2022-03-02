@@ -5,8 +5,7 @@ author: pratyush
 categories: [ Tutorial ]
 image: assets/images/nginx-ssl-grade-a.webp
 description: "Achieve A+ in SSL Labs using Nginx"
-featured: true
-hidden: true
+comments: true
 ---
 
 How to achieve A+ rating on SSL Labs test on a server running Nginx with Openssl version 1.0.2k.

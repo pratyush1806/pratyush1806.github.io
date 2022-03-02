@@ -6,8 +6,7 @@ categories: [ Security, Tutorial ]
 #tags: [red, yellow]
 image: assets/images/ssl-certificates.webp
 description: "How to generate SSL Certificates for Java servers"
-featured: true
-hidden: true
+comments: true
 #rating: 4.5
 ---
 

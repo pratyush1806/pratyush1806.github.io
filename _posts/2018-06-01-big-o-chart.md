@@ -16,3 +16,13 @@ Big O Notation is a mathematical function used in computer science to describe a
 4. Quadratic time: O(n<sup>2</sup>)
 5. Exponential time: O(2<sup>n</sup>)
 6. Factorial time: O(n!)
+
+### Datastructures Operations (Average case):
+| Data Structure     | Access   | Search   | Insertion | Deletion |
+|--------------------|----------|----------|-----------|----------|
+| Array              |   O(1)   |   O(n)   |   O(n)    |   O(n)   |
+| Stack              |   O(n)   |   O(n)   |   O(1)    |   O(1)   |
+| Queue              |   O(n)   |   O(n)   |   O(1)    |   O(1)   |
+| Linked List	     |   O(n)   |   O(n)   |   O(1)    |   O(1)   |
+| Hash Table         |   NA     |   O(1)   |   O(1)    |   O(1)   |
+| Binary Search Tree | O(log n) | O(log n) | O(log n)  | O(log n) |

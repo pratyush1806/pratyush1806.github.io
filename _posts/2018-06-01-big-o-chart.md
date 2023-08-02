@@ -18,6 +18,7 @@ Big O Notation is a mathematical function used in computer science to describe a
 6. Factorial time: O(n!)
 
 ### Datastructures Operations (Average case):
+
 | Data Structure     | Access   | Search   | Insertion | Deletion |
 |--------------------|----------|----------|-----------|----------|
 | Array              |   O(1)   |   O(n)   |   O(n)    |   O(n)   |

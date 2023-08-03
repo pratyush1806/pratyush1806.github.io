@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Security Headers"
+title: "Tuning of HTTP headers for Security"
 author: pratyush
 categories: [ Security, Tutorial ]
 #tags: [red, yellow]
 image: assets/images/security-headers.webp
-description: "How to secure website using proper http headers"
+description: "How to secure a website using HTTP Headers"
 comments: true
 #rating: 4.5
 ---

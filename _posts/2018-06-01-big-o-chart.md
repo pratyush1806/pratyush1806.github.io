@@ -27,3 +27,16 @@ Big O Notation is a mathematical function used in computer science to describe a
 | Linked List	     |   O(n)   |   O(n)   |   O(1)    |   O(1)   |
 | Hash Table         |   NA     |   O(1)   |   O(1)    |   O(1)   |
 | Binary Search Tree | O(log n) | O(log n) | O(log n)  | O(log n) |
+
+### Array Sorting Algorithms (Average case):
+
+|   Algorithm    | Time Complexity |
+|----------------|-----------------|
+| Bubble Sort    |     O(n^2)      |
+| Insertion Sort |     O(n^2)      |
+| Insertion Sort |     O(n^2)      |
+| Quicksort      |   O(n log(n))   |
+| Mergesort      |   O(n log(n))   |
+| Heapsort       |   O(n log(n))   |
+| Bucket Sort    |     O(n+k)      |
+| Radix Sort     |      O(nk)      |

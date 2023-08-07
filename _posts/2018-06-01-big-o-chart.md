@@ -20,7 +20,7 @@ Big O Notation is a mathematical function used in computer science to describe a
 ### Datastructures Operations (Average case):
 
 | Data Structure     | Access   | Search   | Insertion | Deletion |
-|--------------------|----------|----------|-----------|----------|
+|:------------------:|:--------:|:--------:|:---------:|:--------:|
 | Array              |   O(1)   |   O(n)   |   O(n)    |   O(n)   |
 | Stack              |   O(n)   |   O(n)   |   O(1)    |   O(1)   |
 | Queue              |   O(n)   |   O(n)   |   O(1)    |   O(1)   |
@@ -31,7 +31,7 @@ Big O Notation is a mathematical function used in computer science to describe a
 ### Array Sorting Algorithms (Average case):
 
 |   Algorithm    | Time Complexity |
-|----------------|-----------------|
+|:--------------:|:---------------:|
 | Bubble Sort    |     O(n^2)      |
 | Insertion Sort |     O(n^2)      |
 | Insertion Sort |     O(n^2)      |

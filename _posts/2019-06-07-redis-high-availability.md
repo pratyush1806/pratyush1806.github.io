@@ -25,7 +25,7 @@ Redis Master-Slave replication is a data synchronization mechanism that enables 
 
 ### The Redis configuration file, usually named redis.conf, contains various settings that govern the behavior and performance of the Redis server. Below is a template of the Redis configuration file with explanations for each section:
 ```
-# Redis Configuration File
+# Redis Configuration File (version 5.0 and above)
 
 # Server
 bind 127.0.0.1             # IP address on which the Redis server will listen.

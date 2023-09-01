@@ -5,7 +5,6 @@ author: pratyush
 categories: [ Tutorial ]
 image: assets/images/nginx-ssl-grade-a.webp
 description: "Achieve A+ in SSL Labs using Nginx"
-featured: true
 comments: true
 ---
 

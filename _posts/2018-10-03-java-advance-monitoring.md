@@ -5,6 +5,7 @@ author: pratyush
 categories: [ Tuning, Tutorial ]
 image: assets/images/java-advance-monitoring.webp
 description: "Monitoring and performance tuning in Java"
+featured: true
 hidden: true
 ---
 

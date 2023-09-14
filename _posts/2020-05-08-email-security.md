@@ -2,7 +2,7 @@
 layout: post
 title: "Email Security using DMARC, DKIM, and SPF configuration"
 author: pratyush
-categories: [ Tutorial ]
+categories: [ Security, Tutorial ]
 image: assets/images/email-security.webp
 description: "Email Security using DMARC, DKIM, and SPF configuration"
 comments: true

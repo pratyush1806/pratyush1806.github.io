@@ -14,7 +14,7 @@ MySQL Master-Master replication is a powerful technique for high availability an
 In a Master-Master replication configuration, both nodes act as both masters and slaves, allowing data to be written and read from either node. This symmetry helps distribute the database workload evenly and ensures that no single point of failure exists.
 
 ### Server A Configuration (IP Address 172.17.0.2)
-1.Open the MySQL configuration file, usually located at /etc/my.cnf or /etc/mysql/my.cnf, and add or modify the following settings:
+Setp 1: Open the MySQL configuration file, usually located at /etc/my.cnf or /etc/mysql/my.cnf, and add or modify the following settings:
 
 ```
 [mysqld]
@@ -39,13 +39,13 @@ auto_increment_offset = 1
 
 `auto_increment_offset`: We can use different `auto_increment_offset` values for each server.
 
-2.Save the configuration file and restart MySQL:
+Setp 2: Save the configuration file and restart MySQL:
 
 ```
 service mysql restart
 ```
 
-3.Login to the server and check the master status:
+Step 3: Login to the server and check the master status:
 
 ```
 show master status;
@@ -58,7 +58,7 @@ show master status;
 ```
 
 ### Server B Configuration (IP Address 172.17.0.3)
-1.Open the MySQL configuration file, usually located at /etc/my.cnf or /etc/mysql/my.cnf, and add or modify the following settings:
+Step 1: Open the MySQL configuration file, usually located at /etc/my.cnf or /etc/mysql/my.cnf, and add or modify the following settings:
 
 ```
 [mysqld]
@@ -83,13 +83,13 @@ auto_increment_offset = 2
 
 `auto_increment_offset`: We can use different `auto_increment_offset` values for each server.
 
-2.Save the configuration file and restart MySQL:
+Step 2: Save the configuration file and restart MySQL:
 
 ```
 service mysql restart
 ```
 
-3.Login to the server and check the master status:
+Step 3: Login to the server and check the master status:
 
 ```
 show master status;
@@ -102,7 +102,7 @@ show master status;
 ```
 
 ### Setting Up Replication on Server A (IP Address 172.17.0.2)
-1.Create a MySQL user for replication:
+Step 1: Create a MySQL user for replication:
 
 ```
 create user 'replicator'@'%' identified by 'password';
@@ -114,7 +114,7 @@ CHANGE MASTER TO MASTER_HOST = '172.17.0.3', MASTER_USER = 'replicator', MASTER_
 flush privileges;
 ```
 
-2.Start the Slave:
+Step 2: Start the Slave:
 You should see "Slave_IO_Running" and "Slave_SQL_Running" as "Yes" if the replication is working correctly.
 
 ```
@@ -137,7 +137,7 @@ show slave status \G;
 ```
 
 ### Setting Up Replication on Server B (IP Address 172.17.0.3)
-1.Create a MySQL user for replication:
+Step 1: Create a MySQL user for replication:
 
 ```
 create user 'replicator'@'%' identified by 'password';
@@ -149,7 +149,7 @@ CHANGE MASTER TO MASTER_HOST = '172.17.0.2', MASTER_USER = 'replicator', MASTER_
 flush privileges;
 ```
 
-2.Start the Slave:
+Step 2: Start the Slave:
 You should see "Slave_IO_Running" and "Slave_SQL_Running" as "Yes" if the replication is working correctly.
 
 ```

@@ -32,7 +32,7 @@ Now that you've identified the slow query, it's time to optimize it with indexin
 db.products.createIndex({ category: 1, price: 1, rating: -1 })
 ```
 
-This compound index includes the fields used in our query: `category`, `price`, and `rating`. The order of fields in the index matters; it should match the query's filter criteria and sort order.
+This compound index includes the fields used in our query: `category`, `price` and `rating`. The order of fields in the index matters; it should match the query's filter criteria and sort order.
 
 **Step 3**: Re-run the Query
 

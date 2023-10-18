@@ -15,6 +15,7 @@ In a Master-Master replication configuration, both nodes act as both masters and
 
 ### Server A Configuration (IP Address 172.17.0.2)
 1. Open the MySQL configuration file, usually located at /etc/my.cnf or /etc/mysql/my.cnf, and add or modify the following settings:
+
 ```
 [mysqld]
 
@@ -39,11 +40,13 @@ auto_increment_offset = 1
 `auto_increment_offset`: We can use different `auto_increment_offset` values for each server.
 
 2. Save the configuration file and restart MySQL:
+
 ```
 service mysql restart
 ```
 
 3. Login to the server and check the master status:
+
 ```
 show master status;
 +------------------+----------+--------------+------------------+
@@ -56,6 +59,7 @@ show master status;
 
 ### Server B Configuration (IP Address 172.17.0.3)
 1. Open the MySQL configuration file, usually located at /etc/my.cnf or /etc/mysql/my.cnf, and add or modify the following settings:
+
 ```
 [mysqld]
 
@@ -80,11 +84,13 @@ auto_increment_offset = 2
 `auto_increment_offset`: We can use different `auto_increment_offset` values for each server.
 
 2. Save the configuration file and restart MySQL:
+
 ```
 service mysql restart
 ```
 
 3. Login to the server and check the master status:
+
 ```
 show master status;
 +------------------+----------+--------------+------------------+
@@ -97,6 +103,7 @@ show master status;
 
 ### Setting Up Replication on Server A (IP Address 172.17.0.2)
 1. Create a MySQL user for replication:
+
 ```
 create user 'replicator'@'%' identified by 'password';
 
@@ -109,6 +116,7 @@ flush privileges;
 
 2. Start the Slave:
 You should see "Slave_IO_Running" and "Slave_SQL_Running" as "Yes" if the replication is working correctly.
+
 ```
 start slave;
 show slave status \G;
@@ -130,6 +138,7 @@ show slave status \G;
 
 ### Setting Up Replication on Server B (IP Address 172.17.0.3)
 1. Create a MySQL user for replication:
+
 ```
 create user 'replicator'@'%' identified by 'password';
 
@@ -142,6 +151,7 @@ flush privileges;
 
 2. Start the Slave:
 You should see "Slave_IO_Running" and "Slave_SQL_Running" as "Yes" if the replication is working correctly.
+
 ```
 start slave;
 show slave status \G;

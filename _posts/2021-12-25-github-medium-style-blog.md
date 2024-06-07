@@ -6,7 +6,7 @@ categories: [ Tutorial ]
 #tags: [red, yellow]
 image: assets/images/github-medium-style-blog.webp
 description: "How to use Github Pages to create your own Blog"
-featured: true
+featured: false
 hidden: true
 #rating: 4.5
 ---

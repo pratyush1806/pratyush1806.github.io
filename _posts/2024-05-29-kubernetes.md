@@ -6,6 +6,7 @@ categories: [ Tutorial ]
 image: assets/images/kubernetes.webp
 description: "Demystifying Kubernetes: A Comprehensive Guide"
 featured: true
+hidden: true
 comments: true
 ---
 

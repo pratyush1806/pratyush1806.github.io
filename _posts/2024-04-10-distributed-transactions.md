@@ -28,7 +28,7 @@ If the process or machine holding the lock fails, the lock might not be released
 ### The Solution: Distributed Locking
 Distributed locking addresses these issues by providing a mechanism for managing locks across multiple nodes in a distributed system. Let's revisit the implementation of distributed locking using Redis in a Spring Boot application, focusing on a practical example of managing credit and debit transactions.
 
-1. Project setup
+#### 1. Project setup
 Here's the `pom.xml` for the Spring Boot project with Redis for distributed locking
 
 ```
@@ -90,7 +90,7 @@ Here's the `pom.xml` for the Spring Boot project with Redis for distributed lock
 </project>
 ```
 
-2. Configuring Redis
+#### 2. Configuring Redis
 Add the necessary Redis configuration to your `application.properties`
 
 ```
@@ -105,7 +105,7 @@ spring.datasource.username=sa
 spring.datasource.password=
 ```
 
-3. Distributed Lock Service
+#### 3. Distributed Lock Service
 Create a service to manage distributed locks
 
 ```
@@ -133,7 +133,7 @@ public class DistributedLockService {
 }
 ```
 
-4. Account Entity and Repository
+#### 4. Account Entity and Repository
 Define the Account entity and repository
 
 ```
@@ -167,7 +167,7 @@ public interface AccountRepository extends CrudRepository<Account, Integer> {
 }
 ```
 
-5. Transaction Service
+#### 5. Transaction Service
 Implement the transaction service with distributed locking
 
 ```
@@ -227,7 +227,7 @@ public class TransactionService {
 }
 ```
 
-6. Controller
+#### 6. Controller
 Create a controller to handle HTTP requests for credit and debit operations
 
 ```

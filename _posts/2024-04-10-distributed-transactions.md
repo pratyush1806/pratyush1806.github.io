@@ -5,8 +5,6 @@ author: pratyush
 categories: [ Tutorial ]
 image: assets/images/distributed-transactions.webp
 description: "Problem with Locking and the Solution of Distributed Locking"
-featured: true
-hidden: true
 comments: true
 ---
 

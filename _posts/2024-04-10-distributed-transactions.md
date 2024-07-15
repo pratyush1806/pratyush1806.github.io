@@ -30,7 +30,8 @@ Distributed locking addresses these issues by providing a mechanism for managing
 
 1. Project setup
 
-Here's the `pom.xml` for the Spring Boot project with Redis for distributed locking
+    Here's the `pom.xml` for the Spring Boot project with Redis for distributed locking
+
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -88,12 +89,11 @@ Here's the `pom.xml` for the Spring Boot project with Redis for distributed lock
 	</build>
 
 </project>
-
 ```
 
 2. Configuring Redis
 
-Add the necessary Redis configuration to your `application.properties`
+    Add the necessary Redis configuration to your `application.properties`
 
 ```
 # Redis Configuration
@@ -109,7 +109,7 @@ spring.datasource.password=
 
 3. Distributed Lock Service
 
-Create a service to manage distributed locks
+    Create a service to manage distributed locks
 
 ```
 import java.util.concurrent.TimeUnit;
@@ -138,7 +138,7 @@ public class DistributedLockService {
 
 4. Account Entity and Repository
 
-Define the Account entity and repository
+    Define the Account entity and repository
 
 ```
 import javax.persistence.Entity;
@@ -173,7 +173,8 @@ public interface AccountRepository extends CrudRepository<Account, Integer> {
 
 5. Transaction Service
 
-Implement the transaction service with distributed locking
+    Implement the transaction service with distributed locking
+
 ```
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -233,7 +234,8 @@ public class TransactionService {
 
 6. Controller
 
-Create a controller to handle HTTP requests for credit and debit operations
+    Create a controller to handle HTTP requests for credit and debit operations
+    
 ```
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

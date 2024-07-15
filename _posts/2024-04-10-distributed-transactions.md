@@ -29,9 +29,7 @@ If the process or machine holding the lock fails, the lock might not be released
 Distributed locking addresses these issues by providing a mechanism for managing locks across multiple nodes in a distributed system. Let's revisit the implementation of distributed locking using Redis in a Spring Boot application, focusing on a practical example of managing credit and debit transactions.
 
 1. Project setup
-
-    Here's the `pom.xml` for the Spring Boot project with Redis for distributed locking
-
+Here's the `pom.xml` for the Spring Boot project with Redis for distributed locking
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -92,9 +90,7 @@ Distributed locking addresses these issues by providing a mechanism for managing
 ```
 
 2. Configuring Redis
-
-    Add the necessary Redis configuration to your `application.properties`
-
+Add the necessary Redis configuration to your `application.properties`
 ```
 # Redis Configuration
 spring.redis.host=localhost
@@ -108,9 +104,7 @@ spring.datasource.password=
 ```
 
 3. Distributed Lock Service
-
-    Create a service to manage distributed locks
-
+Create a service to manage distributed locks
 ```
 import java.util.concurrent.TimeUnit;
 
@@ -137,9 +131,7 @@ public class DistributedLockService {
 ```
 
 4. Account Entity and Repository
-
-    Define the Account entity and repository
-
+Define the Account entity and repository
 ```
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -172,9 +164,7 @@ public interface AccountRepository extends CrudRepository<Account, Integer> {
 ```
 
 5. Transaction Service
-
-    Implement the transaction service with distributed locking
-
+Implement the transaction service with distributed locking
 ```
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -233,9 +223,7 @@ public class TransactionService {
 ```
 
 6. Controller
-
-    Create a controller to handle HTTP requests for credit and debit operations
-    
+Create a controller to handle HTTP requests for credit and debit operations
 ```
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

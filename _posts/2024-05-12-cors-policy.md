@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "CORS Policy"
+title: "Understanding CORS Policy: A Detailed Guide"
 author: pratyush
 categories: [ Tutorial ]
 image: assets/images/cors-policy.webp

@@ -7,13 +7,14 @@ image: assets/images/cors-policy.webp
 description: "Understanding CORS Policy"
 comments: true
 ---
-## Introduction to CORS
+
+### Introduction to CORS
 Cross-Origin Resource Sharing (CORS) is a critical security mechanism implemented by web browsers to control how web pages in one domain can make requests to another domain. As web applications become increasingly complex and distributed, understanding CORS is essential for developers to create secure and functional web services.
 
-## What is CORS?
+### What is CORS?
 CORS is a browser security feature that restricts web pages from making requests to a different domain than the one serving the web page. This mechanism prevents malicious websites from making unauthorized requests to your API or server, protecting users from potential cross-site scripting (XSS) and other security vulnerabilities.
 
-## Why is CORS Necessary?
+### Why is CORS Necessary?
 By default, web browsers follow the Same-Origin Policy, which prevents web pages from making requests to a different domain. While this policy enhances security, it also limits the functionality of modern web applications that often need to interact with multiple services and APIs.
 CORS provides a controlled way to relax these restrictions, allowing servers to specify:
 
@@ -23,9 +24,10 @@ CORS provides a controlled way to relax these restrictions, allowing servers to 
 
 ![CORS Policy](https://docs.aws.amazon.com/images/sdk-for-javascript/v2/developer-guide/images/cors-overview.png)
 
-## The Role of Preflight Requests in CORS
+### The Role of Preflight Requests in CORS
 A preflight request is a special type of HTTP `OPTIONS` request that browsers automatically send before making a complex cross-origin HTTP request. It acts as a preliminary "permission check" to determine whether the actual request is safe to send.
-### How Preflight Requests Work
+
+#### How Preflight Requests Work
 1. **Initial Check:** The browser sends an `OPTIONS` request to the target server with two key headers `Access-Control-Request-Method` and `Access-Control-Request-Headers`.
 
 2. **Server Response:** The server responds with CORS headers indicating:
@@ -51,7 +53,7 @@ Access-Control-Allow-Headers: Content-Type, Authorization
 Access-Control-Max-Age: 86400
 ```
 
-## CORS Headers: A Detailed Breakdown
+### CORS Headers: A Detailed Breakdown
 1. Access-Control-Allow-Origin
     * Specifies which origins are permitted to access the resource
     * Can be a specific domain or * for all origins (not recommended for production)
@@ -98,7 +100,7 @@ Access-Control-Expose-Headers: X-Custom-Header, Content-Length
 Access-Control-Max-Age: 86400
 ```
 
-## Full Nginx Configuration for CORS setup
+### Full Nginx Configuration for CORS setup
 ```
 server {
     listen 80;
@@ -123,7 +125,7 @@ server {
 }
 ```
 
-## Best Practices
+### Best Practices
 1. Always specify exact origins instead of using `*`
 2. Use the least permissive CORS configuration possible
 3. Implement proper authentication and authorization

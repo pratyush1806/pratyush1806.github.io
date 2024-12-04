@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MySQL Master Slave Replication"
+title: "MySQL Master Slave Replication 0 downtime"
 author: pratyush
 categories: [ Tutorial ]
 image: assets/images/mysql-master-slave-replication.webp
@@ -45,7 +45,7 @@ show master status;
 +------------------+----------+--------------+------------------+
 | File             | Position | Binlog_Do_DB | Binlog_Ignore_DB |
 +------------------+----------+--------------+------------------+
-| mysql-bin.000001 |      107 | test         |                  |
+| mysql-bin.000001 |      107 |              |                  |
 +------------------+----------+--------------+------------------+
 1 row in set (0.00 sec)
 ```

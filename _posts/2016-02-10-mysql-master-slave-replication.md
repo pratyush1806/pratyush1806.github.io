@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MySQL Master Slave Replication with 0 downtime"
+title: "MySQL Master Slave Replication (with 0 downtime)"
 author: pratyush
 categories: [ Tutorial ]
 image: assets/images/mysql-master-slave-replication.webp

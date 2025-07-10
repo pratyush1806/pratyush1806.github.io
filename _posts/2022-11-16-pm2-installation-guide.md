@@ -15,13 +15,13 @@ PM2 is a production-ready process manager for Node.js applications. It simplifie
 
 ### Installing PM2
 To get started, you'll need to install PM2 globally on your server or development machine. You can do this using npm (Node Package Manager) with the following command
-```javascript
+```
 npm install pm2 -g
 ```
 
 ### Running a Node.js Application with PM2 in Fork mode
 Once PM2 is installed, you can use it to start and manage your Node.js applications. Here's how to run a Node.js app using PM2
-```javascript
+```
 pm2 start app.js
 
 [PM2] Spawning PM2 daemon with pm2_home=/Users/pratyush/.pm2
@@ -37,7 +37,7 @@ pm2 start app.js
 > PM2 will automatically manage the process, ensuring it stays running and restarting it if it crashes.
 
 ### Stopping and deleting the the Node.js Application from pm2 list
-```javascript
+```
 pm2 stop app
 [PM2] Applying action stopProcessId on app [app](ids: [ 0 ])
 [PM2] [app](0) ✓
@@ -57,7 +57,7 @@ pm2 delete all
 
 ### Running a 3 node Node.js Application with PM2 in Cluster mode
 The cluster mode allows networked Node.js applications (http(s)/tcp/udp server) to be scaled across all CPUs available, without any code modifications. This greatly increases the performance and reliability of your applications, depending on the number of CPUs available.
-```javascript
+```
 pm2 start app.js -i 3
 [PM2] Starting /Users/pratyush/git/nodejs-crud-mongo/app.js in cluster_mode (3 instances)
 [PM2] Done.
@@ -72,7 +72,7 @@ pm2 start app.js -i 3
 
 ### Scaling by adding 1 more node
 PM2 can automatically restart processes that crash or encounter issues. Additionally, it supports process scaling, allowing you to run multiple instances of your Node.js application to handle high traffic loads.
-```javascript
+```
 pm2 scale app +1
 [PM2] Scaling up application
 ┌─────┬────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
@@ -88,7 +88,7 @@ pm2 scale app +1
 ### Zero-downtime reloads
 PM2 can Performs a graceful reload by reloading the workers one by one keeping the app online the whole time.
 > Reload is perfect for cluster mode, rolling restarts, and production deployments.
-```javascript
+```
 pm2 reload app
 Use --update-env to update environment variables
 [PM2] Applying action reloadProcessId on app [app](ids: [ 0, 1, 2 ])
@@ -98,7 +98,7 @@ Use --update-env to update environment variables
 ```
 
 ### Stopping and deleting the the Node.js Application from pm2 list
-```javascript
+```
 pm2 stop all 
 [PM2] Applying action stopProcessId on app [all](ids: [ 0, 1, 2 ])
 [PM2] [app](0) ✓
@@ -125,25 +125,25 @@ pm2 delete all
 
 ### PM2 essential monitoring commands
 1. **View Process List**: To see a list of all running Node.js processes managed by PM2, use the following command
-```javascript
+```
 pm2 list
 ```
 ![pm2 list](/assets/images/pm2-list.png)
 
 2. **Monitor CPU and Memory**: PM2 also provides a real-time monitoring dashboard. You can access it by running
-```javascript
+```
 pm2 monit
 ```
 ![pm2 monit](/assets/images/pm2-monit.png)
 
 3. **Show Project Meta Data**: To see various information of the project such as Revision Control, Code metrics etc by running the command
-```javascript
+```
 pm2 describe 0
 ```
 ![pm2 describe](/assets/images/pm2-describe.png)
 
 4. **Show logs information**: Command to check access and error logs
-```javascript
+```
 pm2 logs
 ```
 ![pm2 logs](/assets/images/pm2-logs.jpeg)
@@ -151,7 +151,7 @@ pm2 logs
 ### Use of `ecosystem.config.js` file
 The ecosystem.config.js file is a configuration file used with PM2 to defines the configuration settings for one or more Node.js applications that you want to manage using PM2. It allows you to specify various options and parameters related to how PM2 should run and manage your Node.js processes. A basic structure of the file consists of `apps` and `deploy`
 
-```javascript
+```
 module.exports = {
   apps: [{}, {}],
   deploy: {}
@@ -159,7 +159,7 @@ module.exports = {
 ```
 
 Here's an example of a minimal `ecosystem.config.js` file
-```javascript
+```
 module.exports = {
   apps: [
     {
@@ -178,7 +178,7 @@ module.exports = {
 ```
 
 ### Seamlessly than acting on an app you can start/stop/restart/delete all apps contained in a configuration file
-```javascript
+```
 # Start all applications
 pm2 start ecosystem.config.js
 

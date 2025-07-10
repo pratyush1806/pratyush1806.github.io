@@ -65,7 +65,7 @@ RIGHT JOIN employees ON departments.department_id = employees.department_id;
 Use Case: This query allows you to see a list of departments and the employees in each department, even if a department doesn't have any employees yet. It helps HR managers manage workforce distribution.
 
 ### FULL JOIN
-MySQL does not support FULL JOIN keyword. But, a FULL JOIN on two tables can be achieved by using three keywords: LEFT JOIN, RIGHT JOIN and UNION keywords.
+> MySQL does not support FULL JOIN keyword. But, a FULL JOIN on two tables can be achieved by using three keywords: LEFT JOIN, RIGHT JOIN and UNION keywords.
 
 Scenario: Analytics and Reporting
 

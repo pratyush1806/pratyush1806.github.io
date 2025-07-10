@@ -92,9 +92,10 @@ PM2 can Performs a graceful reload by reloading the workers one by one keeping t
 ```
 pm2 reload app
 Use --update-env to update environment variables
-[PM2] Applying action reloadProcessId on app [app](ids: [ 0, 1, 2 ])
-[PM2] [app](0) ✓
+[PM2] Applying action reloadProcessId on app [app](ids: [ 0, 1, 2, 3 ])
 [PM2] [app](1) ✓
+[PM2] [app](0) ✓
+[PM2] [app](3) ✓
 [PM2] [app](2) ✓
 ```
 

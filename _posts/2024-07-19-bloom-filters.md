@@ -3,7 +3,7 @@ layout: post
 title: "Bloom Filters"
 author: pratyush
 categories: [ Tutorial ]
-image: assets/images/bloom-filters.png
+image: assets/images/bloom-filters.webp
 description: "Implementing Bloom Filters using Springboot"
 comments: true
 ---

@@ -88,6 +88,7 @@ pm2 scale app +1
 ### Zero-downtime reloads
 PM2 can Performs a graceful reload by reloading the workers one by one keeping the app online the whole time.
 > Reload is perfect for cluster mode, rolling restarts, and production deployments.
+
 ```
 pm2 reload app
 Use --update-env to update environment variables

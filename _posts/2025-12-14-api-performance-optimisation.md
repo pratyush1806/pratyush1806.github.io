@@ -15,7 +15,7 @@ At the server side, Spring’s caching abstraction is enabled using `@EnableCach
 
 At the client side, the REST controller adds HTTP cache headers such as `Cache-Control` and `ETag` to the response. Cache-Control allows browsers or CDNs to cache the response for a specified time, while `ETag` enables conditional requests. If the data has not changed, the server can respond with `304 Not Modified`, reducing bandwidth and improving performance.
 
-1. Dependencies
+1.Dependencies
 
 ```
 <dependencies>
@@ -45,7 +45,7 @@ At the client side, the REST controller adds HTTP cache headers such as `Cache-C
 </dependencies>
 ```
 
-2. Enable Caching
+2.Enable Caching
 
 ```
 @SpringBootApplication
@@ -57,7 +57,7 @@ public class CachingApplication {
 }
 ```
 
-3. Redis Configuration
+3.Redis Configuration
 
 ```
 @Configuration
@@ -72,7 +72,7 @@ public class RedisConfig {
 }
 ```
 
-4. Service Layer (Server-Side Caching)
+4.Service Layer (Server-Side Caching)
 * First call will hit the DB. 
 * Next call will be served from Redis.
 
@@ -94,7 +94,7 @@ public class ProductService {
 }
 ```
 
-5. REST Controller (Client-Side Caching via HTTP Headers)
+5.REST Controller (Client-Side Caching via HTTP Headers)
 * Cache-Control: public, max-age=60
 * Browser/CDN caches response for 60 seconds
 * ETag enables conditional requests (304 Not Modified)
@@ -124,13 +124,13 @@ public class ProductController {
 }
 ```
 
-6. Model Class (Java 17)
+6.Model Class (Java 17)
 
 ```
 public record Product(Long id, String name, Double price) {}
 ```
 
-7. application.properties
+7.application.properties
 
 ```
 spring.redis.host=localhost

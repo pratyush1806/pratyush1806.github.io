@@ -137,9 +137,124 @@ spring.redis.host=localhost
 spring.redis.port=6379
 ```
 
-<!-- ### 2. Use asynchronous processing: Offload long-running tasks via queues and background workers to keep endpoints responsive.
+### 2. Use asynchronous processing: Offload long-running tasks via queues and background workers to keep endpoints responsive.
+To keep REST APIs responsive while handling long-running tasks, we use RabbitMQ as a message queue. Instead of processing heavy work inside the HTTP request thread, the application publishes a message to a RabbitMQ queue and returns the response immediately. A background consumer then processes the task asynchronously.
 
-### 3. Enable pagination and data streaming: Process large data sets in manageable chunks or stream data as it’s available.
+![RabbitMQ Architecture](/assets/images/spring-boot-rabbit-mq.webp)
+
+1.Dependencies
+
+```
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-amqp</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <scope>provided</scope>
+    </dependency>
+</dependencies>
+```
+
+2.RabbitMQ configuration
+
+```
+@Configuration
+public class RabbitMQConfig {
+
+    public static final String QUEUE_NAME = "long-running-task-queue";
+
+    @Bean
+    public Queue taskQueue() {
+        return new Queue(QUEUE_NAME, true);
+    }
+
+    @Bean
+    public MessageConverter messageConverter() {
+        return new Jackson2JsonMessageConverter();
+    }
+}
+```
+
+3.Message payload
+
+```
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class TaskMessage {
+    private String taskId;
+}
+```
+
+4.Producer (publishes tasks to RabbitMQ)
+
+```
+@Service
+@RequiredArgsConstructor
+public class TaskProducer {
+
+    private final RabbitTemplate rabbitTemplate;
+
+    public void send(TaskMessage message) {
+        rabbitTemplate.convertAndSend(RabbitMQConfig.QUEUE_NAME, message);
+    }
+}
+```
+
+5.Consumer (background worker)
+
+```
+@Service
+public class TaskConsumer {
+
+    @RabbitListener(queues = RabbitMQConfig.QUEUE_NAME)
+    public void process(TaskMessage message) throws InterruptedException {
+        System.out.println("Processing task: " + message.getTaskId());
+        Thread.sleep(5000);
+        System.out.println("Completed task: " + message.getTaskId());
+    }
+}
+```
+
+6.REST Controller (fast and responsive endpoint)
+
+```
+@RestController
+@RequestMapping("/tasks")
+@RequiredArgsConstructor
+public class TaskController {
+
+    private final TaskProducer producer;
+
+    @PostMapping("/start")
+    public ResponseEntity<String> startTask() {
+        String taskId = UUID.randomUUID().toString();
+        producer.send(TaskMessage.builder().taskId(taskId).build());
+        return ResponseEntity.accepted().body("Task queued: " + taskId);
+    }
+}
+```
+
+7.application.properties
+
+```
+spring.rabbitmq.host=localhost
+spring.rabbitmq.port=5672
+spring.rabbitmq.username=guest
+spring.rabbitmq.password=guest
+```
+
+<!-- ### 3. Enable pagination and data streaming: Process large data sets in manageable chunks or stream data as it’s available.
 ### 4. Optimize database queries: Use indexes, reduce N+1 query problems, and ensure optimal ORM configurations. 
 ### 5. Use connection pooling: Pool database connections for reuse instead of creating and destroying on each request.
 ### 6. Reduce network hops through smart routing: Use dynamic load balancers and distributed architectures for minimal latency.

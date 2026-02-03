@@ -16,6 +16,7 @@ At the server side, Spring’s caching abstraction is enabled using `@EnableCach
 At the client side, the REST controller adds HTTP cache headers such as `Cache-Control` and `ETag` to the response. Cache-Control allows browsers or CDNs to cache the response for a specified time, while `ETag` enables conditional requests. If the data has not changed, the server can respond with `304 Not Modified`, reducing bandwidth and improving performance.
 
 1. Dependencies
+
 ```
 <dependencies>
     <!-- Spring Web -->
@@ -45,6 +46,7 @@ At the client side, the REST controller adds HTTP cache headers such as `Cache-C
 ```
 
 2. Enable Caching
+
 ```
 @SpringBootApplication
 @EnableCaching
@@ -56,6 +58,7 @@ public class CachingApplication {
 ```
 
 3. Redis Configuration
+
 ```
 @Configuration
 public class RedisConfig {
@@ -69,9 +72,10 @@ public class RedisConfig {
 }
 ```
 
-3. Service Layer (Server-Side Caching)
+4. Service Layer (Server-Side Caching)
 * First call will hit the DB. 
 * Next call will be served from Redis.
+
 ```
 @Service
 public class ProductService {
@@ -90,10 +94,11 @@ public class ProductService {
 }
 ```
 
-4. REST Controller (Client-Side Caching via HTTP Headers)
+5. REST Controller (Client-Side Caching via HTTP Headers)
 * Cache-Control: public, max-age=60
 * Browser/CDN caches response for 60 seconds
 * ETag enables conditional requests (304 Not Modified)
+
 ```
 @RestController
 @RequestMapping("/products")
@@ -119,18 +124,20 @@ public class ProductController {
 }
 ```
 
-5. Model Class
+6. Model Class (Java 17)
+
 ```
 public record Product(Long id, String name, Double price) {}
 ```
 
-6. application.properties
+7. application.properties
+
 ```
 spring.redis.host=localhost
 spring.redis.port=6379
 ```
 
-### 2. Use asynchronous processing: Offload long-running tasks via queues and background workers to keep endpoints responsive.
+<!-- ### 2. Use asynchronous processing: Offload long-running tasks via queues and background workers to keep endpoints responsive.
 
 ### 3. Enable pagination and data streaming: Process large data sets in manageable chunks or stream data as it’s available.
 ### 4. Optimize database queries: Use indexes, reduce N+1 query problems, and ensure optimal ORM configurations. 
@@ -141,4 +148,4 @@ spring.redis.port=6379
 ### 9. Monitor and set performance metrics: Continuously track response times, errors, and throughput to identify and react to bottlenecks promptly.
 ### 10. Use of HTTP/2 or HTTP/3 protocols brings multiplexing, header compression, and better connection reuse, significantly improving latency and throughput for APIs serving many concurrent clients.
 ### 11. Use graceful degradation and circuit breakers: Integrate patterns that allow your API to remain responsive under partial failure, such as fallback values or disabling non-critical features temporarily.
-### 12. Tune JVM and garbage collection settings for Java APIs: Specifically for Java environments, optimizing JVM memory management, garbage collection intervals, and thread pools can yield significant latency improvements.
+### 12. Tune JVM and garbage collection settings for Java APIs: Specifically for Java environments, optimizing JVM memory management, garbage collection intervals, and thread pools can yield significant latency improvements. -->

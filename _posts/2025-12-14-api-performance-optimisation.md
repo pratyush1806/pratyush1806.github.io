@@ -140,6 +140,15 @@ spring.redis.port=6379
 ### 2. Use asynchronous processing: Offload long-running tasks via queues and background workers to keep endpoints responsive.
 To keep REST APIs responsive while handling long-running tasks, we use RabbitMQ as a message queue. Instead of processing heavy work inside the HTTP request thread, the application publishes a message to a RabbitMQ queue and returns the response immediately. A background consumer then processes the task asynchronously.
 
+**Working**
+1. The REST controller receives a request and creates a task message.
+2. The message is published to a durable RabbitMQ queue using RabbitTemplate.
+3. The API responds immediately with 202 Accepted.
+4. A RabbitMQ consumer (@RabbitListener) listens to the queue and processes messages in the background.
+5. RabbitMQ handles buffering, retries, and scalability, ensuring tasks are not lost.
+
+This approach decouples API responsiveness from task execution, supports horizontal scaling, survives application restarts, and is suitable for production workloads such as file processing, notifications, and integrations.
+
 ![RabbitMQ Architecture](/assets/images/spring-boot-rabbit-mq.webp)
 
 1.Dependencies

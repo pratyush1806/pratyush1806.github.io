@@ -263,8 +263,108 @@ spring.rabbitmq.username=guest
 spring.rabbitmq.password=guest
 ```
 
-<!-- ### 3. Enable pagination and data streaming: Process large data sets in manageable chunks or stream data as it’s available.
-### 4. Optimize database queries: Use indexes, reduce N+1 query problems, and ensure optimal ORM configurations. 
+### 3. Enable pagination: Process large data sets in manageable chunks.
+Spring Boot, together with Spring Data JPA, provides built-in support for pagination through the Pageable abstraction. Pagination helps retrieve large datasets in manageable chunks, improving application performance, response times, and user experience.
+
+Using pagination, the application avoids loading the entire result set into memory and instead fetches only a subset of records per request, typically implemented at the database level using LIMIT and OFFSET (for MySQL and compatible databases).
+
+**Spring Data JPA exposes pagination via:**
+
+`Pageable` – Defines page number, page size, and sorting
+
+`Page<T>` – Represents paginated data along with metadata
+
+#### Benefits of Using Pagination
+**1. Performance Optimization**\
+Prevents loading large datasets into memory and reduces database load.\
+**2. Scalability**\
+Enables APIs to scale efficiently as data grows.\
+**3. Improved User Experience**\
+Supports page-by-page navigation and faster UI rendering.\
+**4. Clean API Design**\
+Pagination metadata (total pages, total elements) is automatically provided.\
+**5. Database-Agnostic**\
+JPA translates pagination to database-specific SQL.
+
+1.Entity
+
+```
+@Entity
+@Table(name = "users")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+    private String email;
+
+    // getters & setters
+}
+```
+
+2.Repository
+
+```
+public interface UserRepository extends JpaRepository<User, Long> {
+}
+```
+
+3.Service
+
+```
+@Service
+public class UserService {
+
+    @Autowired
+    private UserRepository repository;
+
+    public Page<User> getUsers(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by("id"));
+        return repository.findAll(pageable);
+    }
+}
+```
+
+4.Controller
+
+```
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+
+    @Autowired
+    private UserService service;
+
+    @GetMapping
+    public Page<User> getUsers(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ) {
+        return service.getUsers(page, size);
+    }
+}
+```
+
+5.What Hibernate generates (MySQL)
+
+```
+select user0_.id as id1_1_0_, 
+       user0_.name as name2_1_0_, 
+       user0_.email as email3_1_0_ 
+from user user0_ 
+order by user0_.id asc limit 10 offset 0
+
+select count(id) as col_0_0_1_ from user user1_
+```
+
+> `Page<T>` always triggers an additional COUNT(*) query which can sometimes be expensive on large tables.\
+> Ensure indexes exist on columns used for sorting and filtering.\
+> Never allow unbounded page sizes from clients. Always enforce a maximum page size (e.g., 50/100).
+
+
+<!-- ### 4. Optimize database queries: Use indexes, reduce N+1 query problems, and ensure optimal ORM configurations. 
 ### 5. Use connection pooling: Pool database connections for reuse instead of creating and destroying on each request.
 ### 6. Reduce network hops through smart routing: Use dynamic load balancers and distributed architectures for minimal latency.
 ### 7. Compress payloads: Enable compression (e.g., gzip) for API requests and responses to decrease transfer times.

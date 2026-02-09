@@ -268,10 +268,8 @@ Spring Boot, together with Spring Data JPA, provides built-in support for pagina
 
 Using pagination, the application avoids loading the entire result set into memory and instead fetches only a subset of records per request, typically implemented at the database level using LIMIT and OFFSET (for MySQL and compatible databases).
 
-**Spring Data JPA exposes pagination via:**
-
-`Pageable` – Defines page number, page size, and sorting
-
+**Spring Data JPA exposes pagination via:**\
+`Pageable` – Defines page number, page size, and sorting\
 `Page<T>` – Represents paginated data along with metadata
 
 #### Benefits of Using Pagination

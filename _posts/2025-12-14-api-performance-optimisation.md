@@ -534,11 +534,11 @@ spring.datasource.hikari.connection-timeout=20000
 spring.datasource.hikari.max-lifetime=1800000
 ```
 
-**Important Parameters:**\
-* maximum-pool-size – Maximum number of connections in the pool.
-* minimum-idle – Minimum idle connections maintained.
-* connection-timeout – Time to wait for a connection before timing out.
-* max-lifetime – Maximum lifetime of a connection.
+**Important Parameters:**
+* `maximum-pool-size` – Maximum number of connections in the pool.
+* `minimum-idle` – Minimum idle connections maintained.
+* `connection-timeout` – Time to wait for a connection before timing out.
+* `max-lifetime` – Maximum lifetime of a connection.
 
 <!-- ### 6. Reduce network hops through smart routing: Use dynamic load balancers and distributed architectures for minimal latency.
 ### 7. Compress payloads: Enable compression (e.g., gzip) for API requests and responses to decrease transfer times.

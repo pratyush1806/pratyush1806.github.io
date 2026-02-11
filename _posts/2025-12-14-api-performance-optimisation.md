@@ -373,7 +373,7 @@ We can get this issue with any type of relationship. However, it usually arises 
 * Hibernate runs:
 ```
 1 query → select * from orders
-3 queries → select * from order_items where order_id = ?
+3 queries → select * from order_item where order_id = ?
 ```
 
 **Why it’s bad**
@@ -437,6 +437,47 @@ WHERE o1_.id=2
 SELECT oi.* FROM order_item oi0_ 
 LEFT OUTER JOIN order o1_ ON oi0_.order_id=o1_.id 
 WHERE o1_.id=3
+```
+
+**Fixing the N+1 Problem (Solution 1)**\
+To fix the N+1 problem in the `OrderRepository.findAll()` query using JOIN FETCH add a custom JPQL method with `JOIN FETCH` on the `items` collection.
+
+```
+@Repository
+public interface OrderRepository extends JpaRepository<Order, Long> {
+    
+    @Query("SELECT DISTINCT o FROM Order o LEFT JOIN FETCH o.items")
+    List<Order> findAll();
+    
+    // OR create a dedicated method
+    @Query("SELECT DISTINCT o FROM Order o LEFT JOIN FETCH o.items")
+    List<Order> findAllWithItems();
+}
+```
+
+**Generated SQL (Single query)**\
+```
+SELECT DISTINCT o.*, oi.* 
+FROM order_table o 
+LEFT OUTER JOIN order_item oi ON o.id = oi.order_id
+```
+
+> Note: Use the `@Transactional(readOnly = true)` service method to ensure the session stays open during iteration.
+
+**Fixing the N+1 Problem (Solution 2)**\
+We can also use `@EntityGraph(attributePaths = "items")` on `findAll()` which is a clean, declarative way to fix the N+1 problem for the Order->OrderItem relationship, generating a single JOIN query.
+
+```
+@Repository
+public interface OrderRepository extends JpaRepository<Order, Long> {
+    @EntityGraph(attributePaths = "items")  // single annotation
+    List<Order> findAll();
+}
+```
+
+**Generated SQL (Single query)**\
+```
+SELECT o.*, oi.* FROM order o LEFT JOIN order_item oi ON o.id=oi.order_id
 ```
 
 <!-- ### 5. Use connection pooling: Pool database connections for reuse instead of creating and destroying on each request.

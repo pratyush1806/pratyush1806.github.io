@@ -480,8 +480,67 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 SELECT o.*, oi.* FROM order o LEFT JOIN order_item oi ON o.id=oi.order_id
 ```
 
-<!-- ### 5. Use connection pooling: Pool database connections for reuse instead of creating and destroying on each request.
-### 6. Reduce network hops through smart routing: Use dynamic load balancers and distributed architectures for minimal latency.
+**Some Pro Tips**\
+1.Avoid Open Session in View
+```
+spring.jpa.open-in-view=false
+```
+2.Index Foreign Keys
+```
+CREATE INDEX idx_order_items_order_id ON order_item(order_id);
+```
+3.Monitor SQL & Performance
+```
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+```
+4.Avoid Bi-Directional Relationships Unless Needed
+
+### 5. Use connection pooling: Pool database connections for reuse instead of creating and destroying on each request.
+Connection pooling in Spring Boot is a mechanism to manage and reuse database connections instead of creating a new connection for every database request. Since creating a database connection is expensive in terms of time and resources, pooling significantly improves performance and scalability.
+
+**What is Connection Pooling?**\
+A connection pool maintains a pool (cache) of open database connections. When the application needs to interact with the database:\
+1.It borrows a connection from the pool.\
+2.Executes the query.\
+3.Returns the connection to the pool instead of closing it.
+
+Spring Boot uses HikariCP as the default connection pool (since Spring Boot 2.x), which is lightweight and high-performance.
+
+**Minimal Spring Boot Configuration**
+
+1.Maven Dependency (if using JPA)
+
+```
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+```
+
+2.Minimal application.properties
+
+```
+spring.datasource.url=jdbc:mysql://localhost:3306/mydb
+spring.datasource.username=root
+spring.datasource.password=secret
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# Hikari Pool configurations (optional)
+spring.datasource.hikari.maximum-pool-size=10
+spring.datasource.hikari.minimum-idle=5
+spring.datasource.hikari.idle-timeout=30000
+spring.datasource.hikari.connection-timeout=20000
+spring.datasource.hikari.max-lifetime=1800000
+```
+
+**Important Parameters:**\
+* maximum-pool-size – Maximum number of connections in the pool.
+* minimum-idle – Minimum idle connections maintained.
+* connection-timeout – Time to wait for a connection before timing out.
+* max-lifetime – Maximum lifetime of a connection.
+
+<!-- ### 6. Reduce network hops through smart routing: Use dynamic load balancers and distributed architectures for minimal latency.
 ### 7. Compress payloads: Enable compression (e.g., gzip) for API requests and responses to decrease transfer times.
 ### 8. Apply rate limiting and throttling: Prevent API abuse and accidental overload by limiting requests per client or IP.
 ### 9. Monitor and set performance metrics: Continuously track response times, errors, and throughput to identify and react to bottlenecks promptly.

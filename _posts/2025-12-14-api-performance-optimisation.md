@@ -362,8 +362,84 @@ select count(id) as col_0_0_1_ from user user1_
 > Never allow unbounded page sizes from clients. Always enforce a maximum page size (e.g., 50/100).
 
 
-<!-- ### 4. Optimize database queries: Use indexes, reduce N+1 query problems, and ensure optimal ORM configurations. 
-### 5. Use connection pooling: Pool database connections for reuse instead of creating and destroying on each request.
+### 4.Optimize database queries: Use indexes, reduce N+1 query problems, and ensure optimal ORM configurations. 
+The `N+1 problem` is the situation when, for a single request, for example, fetching `Orders`, we make additional requests for each `Order` to get their information. Although this problem often is connected to lazy loading, it’s not always the case.
+
+We can get this issue with any type of relationship. However, it usually arises from `many-to-many` or `one-to-many` relationships.
+
+**Example scenario**
+* Fetch 3 Order entities
+* Each Order has a lazy-loaded `List<OrderItem>`
+* Hibernate runs:
+```
+1 query → select * from orders
+3 queries → select * from order_items where order_id = ?
+```
+
+**Why it’s bad**
+* Poor performance
+* Excessive DB round-trips
+* Scales badly under load
+
+**Entity Mapping**
+```
+@Entity
+public class Order {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    private String customer;
+
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    private List<OrderItem> items;
+}
+```
+
+```
+@Entity
+public class OrderItem {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    private String product;
+
+    @ManyToOne
+    private Order order;
+}
+```
+
+**Repository (Triggers N+1)**
+```
+@Repository
+public interface OrderRepository extends JpaRepository<Order, Long> {
+    List<Order> findAll();
+}
+```
+**Generated SQL queries**\
+Assuming 3 Orders exist
+```
+# initial query
+SELECT * FROM order_table o0_
+
+# lazy loading N=3 queries
+SELECT oi.* FROM order_item oi0_ 
+LEFT OUTER JOIN order o1_ ON oi0_.order_id=o1_.id 
+WHERE o1_.id=1
+
+SELECT oi.* FROM order_item oi0_ 
+LEFT OUTER JOIN order o1_ ON oi0_.order_id=o1_.id 
+WHERE o1_.id=2
+
+SELECT oi.* FROM order_item oi0_ 
+LEFT OUTER JOIN order o1_ ON oi0_.order_id=o1_.id 
+WHERE o1_.id=3
+```
+
+<!-- ### 5. Use connection pooling: Pool database connections for reuse instead of creating and destroying on each request.
 ### 6. Reduce network hops through smart routing: Use dynamic load balancers and distributed architectures for minimal latency.
 ### 7. Compress payloads: Enable compression (e.g., gzip) for API requests and responses to decrease transfer times.
 ### 8. Apply rate limiting and throttling: Prevent API abuse and accidental overload by limiting requests per client or IP.

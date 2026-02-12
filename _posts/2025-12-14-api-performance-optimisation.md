@@ -540,10 +540,43 @@ spring.datasource.hikari.max-lifetime=1800000
 * `connection-timeout` – Time to wait for a connection before timing out.
 * `max-lifetime` – Maximum lifetime of a connection.
 
-<!-- ### 6. Reduce network hops through smart routing: Use dynamic load balancers and distributed architectures for minimal latency.
-### 7. Compress payloads: Enable compression (e.g., gzip) for API requests and responses to decrease transfer times.
-### 8. Apply rate limiting and throttling: Prevent API abuse and accidental overload by limiting requests per client or IP.
-### 9. Monitor and set performance metrics: Continuously track response times, errors, and throughput to identify and react to bottlenecks promptly.
-### 10. Use of HTTP/2 or HTTP/3 protocols brings multiplexing, header compression, and better connection reuse, significantly improving latency and throughput for APIs serving many concurrent clients.
-### 11. Use graceful degradation and circuit breakers: Integrate patterns that allow your API to remain responsive under partial failure, such as fallback values or disabling non-critical features temporarily.
-### 12. Tune JVM and garbage collection settings for Java APIs: Specifically for Java environments, optimizing JVM memory management, garbage collection intervals, and thread pools can yield significant latency improvements. -->
+### 6. Compress payloads: Enable compression (e.g., gzip)
+To enable HTTP response compression (gzip) in Apache Tomcat, we need to configure the HTTP Connector in `TOMCAT_HOME/conf/server.xml`.
+
+```
+<Connector port="8080"
+    protocol="org.apache.coyote.http11.Http11NioProtocol"
+    connectionTimeout="20000"
+    redirectPort="8443"
+    
+    compression="on"
+    compressionMinSize="1024"
+    noCompressionUserAgents="gozilla, traviata"
+    compressibleMimeType="text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json,application/xml" />
+```
+
+**What Each Attribute Means**
+* `compression="on"` - Enables gzip compression
+* `compressionMinSize="1024"` - Only compress responses > 1KB
+* `noCompressionUserAgents` - Browsers that should not receive compressed responses
+* `compressibleMimeType` - MIME types to compress
+
+**Verify Compression**
+```
+# use a curl call
+curl -H "Accept-Encoding: gzip" -I http://localhost:8080
+
+# in the response header look for
+Content-Encoding: gzip
+```
+
+**Compression**
+* Reduces bandwidth
+* Speeds up page load
+* Uses CPU
+
+<!-- ### 7. Apply rate limiting and throttling: Prevent API abuse and accidental overload by limiting requests per client or IP.
+### 8. Monitor and set performance metrics: Continuously track response times, errors, and throughput to identify and react to bottlenecks promptly.
+### 9. Use of HTTP/2 or HTTP/3 protocols brings multiplexing, header compression, and better connection reuse, significantly improving latency and throughput for APIs serving many concurrent clients.
+### 10. Use graceful degradation and circuit breakers: Integrate patterns that allow your API to remain responsive under partial failure, such as fallback values or disabling non-critical features temporarily.
+### 11. Tune JVM and garbage collection settings for Java APIs: Specifically for Java environments, optimizing JVM memory management, garbage collection intervals, and thread pools can yield significant latency improvements. -->

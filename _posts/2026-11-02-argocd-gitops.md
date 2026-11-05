@@ -5,8 +5,6 @@ author: pratyush
 categories: [ Tutorial ]
 image: assets/images/argocd.webp
 description: "Simplifying Kubernetes Deployments with Argo CD using GitOps and Continuous Delivery"
-featured: true
-hidden: true
 comments: true
 ---
 

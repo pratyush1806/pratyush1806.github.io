@@ -128,6 +128,7 @@ Here is my qualitative assessment of these models for software engineering and D
 | Llama 3.3 70B | Very Good | Very Good | Excellent |
 | Phi-4 14B | Good | Good | Very Good |
 | Mistral 7B | Average | Average | Average |
+{: .custom-table .striped }
 
 These ratings are practical assessments, not results from a controlled benchmark. Performance will vary depending on model variants, quantisation and the tasks being evaluated.
 

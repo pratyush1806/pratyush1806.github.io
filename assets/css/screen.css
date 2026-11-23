@@ -946,6 +946,13 @@ iframe {
     background-color: #f4f4f4;
     font-weight: 600;
   }
+
+  @media (max-width: 768px) {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 .striped tbody tr:nth-child(even) {

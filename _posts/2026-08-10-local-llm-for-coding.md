@@ -144,6 +144,7 @@ If I were building a local AI development environment for everyday software engi
 | Web Interface | Open WebUI | Chat interface |
 | IDE Integration | Continue | AI-assisted development |
 | Coding Agent | Aider | Repository-level coding |
+{: .custom-table .striped }
 
 This combination provides a practical foundation for experimenting with locally hosted AI across different engineering workflows.
 
@@ -160,6 +161,7 @@ The following are approximate memory requirements for 4-bit quantised model weig
 | Qwen2.5-Coder 32B | 19–21 GB |
 | Gemma 4 31B | 18–20 GB |
 | Llama 3.3 70B | 40–45 GB |
+{: .custom-table .striped }
 
 These figures represent model weights rather than total runtime memory. Additional memory is required for context, KV cache and inference overhead.
 

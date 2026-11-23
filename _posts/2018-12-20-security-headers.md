@@ -130,3 +130,4 @@ In order to test HTTP Headers we will use Security Headers (https://securityhead
 | x-xss-protection             | X-XSS-Protection sets the configuration for the XSS Auditor built into older browsers. The recommended value was "X-XSS-Protection: 1; mode=block" but you should now look at Content Security Policy instead. |
 | cross-origin-opener-policy   | Cross-Origin Opener Policy allows a site to opt-in to Cross-Origin Isolation in the browser. |
 | cross-origin-resource-policy | Cross-Origin Resource Policy allows a resource owner to specify who can load the resource.              |
+{: .custom-table .striped }
